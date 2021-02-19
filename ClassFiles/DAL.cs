@@ -13,7 +13,7 @@ namespace MagicTrainingProject
     {
 
 
-        private static string connectionString = "Server=localhost;Database=MagicTraining;User Id=MagicAdmin; Password= admin1";
+        private static string connectionString = "Server=localhost;Database=MagicTraining;User Id=MagicAdmin; Password= admin";
         public static DataTable GetDataTable(string sqlQuery)
         {
             try
