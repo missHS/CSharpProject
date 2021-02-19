@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FindTableByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindTableByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindTableByNameResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindTableNames">
+        <s:complexType />
+      </s:element>
+      <s:element name="FindTableNamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindTableNamesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindTableByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:FindTableByName" />
+  </wsdl:message>
+  <wsdl:message name="FindTableByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:FindTableByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindTableNamesSoapIn">
+    <wsdl:part name="parameters" element="tns:FindTableNames" />
+  </wsdl:message>
+  <wsdl:message name="FindTableNamesSoapOut">
+    <wsdl:part name="parameters" element="tns:FindTableNamesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MagicTrainingServiceSoap">
+    <wsdl:operation name="FindTableByName">
+      <wsdl:input message="tns:FindTableByNameSoapIn" />
+      <wsdl:output message="tns:FindTableByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindTableNames">
+      <wsdl:input message="tns:FindTableNamesSoapIn" />
+      <wsdl:output message="tns:FindTableNamesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MagicTrainingServiceSoap" type="tns:MagicTrainingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindTableByName">
+      <soap:operation soapAction="http://tempuri.org/FindTableByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindTableNames">
+      <soap:operation soapAction="http://tempuri.org/FindTableNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MagicTrainingServiceSoap12" type="tns:MagicTrainingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindTableByName">
+      <soap12:operation soapAction="http://tempuri.org/FindTableByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindTableNames">
+      <soap12:operation soapAction="http://tempuri.org/FindTableNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MagicTrainingService">
+    <wsdl:port name="MagicTrainingServiceSoap" binding="tns:MagicTrainingServiceSoap">
+      <soap:address location="http://localhost/MagicTrainingWS/MagicTrainingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MagicTrainingServiceSoap12" binding="tns:MagicTrainingServiceSoap12">
+      <soap12:address location="http://localhost/MagicTrainingWS/MagicTrainingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
